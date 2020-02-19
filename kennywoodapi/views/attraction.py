@@ -21,7 +21,7 @@ class AttractionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'name', 'area')
         depth = 2
 
-
+# The CRUD functionality is inherited from ViewSet.
 class Attractions(ViewSet):
 
     def retrieve(self, request, pk=None):
