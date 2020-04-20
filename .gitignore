@@ -1,2 +1,6 @@
 KennywoodEnv/
 __pycache__
+*.pyc
+migrations
+.vscode/
+db.sqlite3
