@@ -26,8 +26,8 @@ router.register(r'itineraryitems', ItineraryItems, 'itinerary')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('register/', register_user),
-    path('login/', login_user),
+    path('register', register_user),
+    path('login', login_user),
     path('api-token-auth', obtain_auth_token),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
