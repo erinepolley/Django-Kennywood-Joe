@@ -41,9 +41,9 @@ class Attractions(ViewSet):
         if area is not None:
             attractions = attractions.filter(area__id=area)
 
-            serializer = AttractionSerializer(attractions, many=True, context={'request': request})
+        serializer = AttractionSerializer(attractions, many=True, context={'request': request})
 
-            return Response(serializer.data)
+        return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single attraction
