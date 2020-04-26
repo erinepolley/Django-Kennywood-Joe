@@ -25,6 +25,20 @@ class ParkAreaSerializer(serializers.HyperlinkedModelSerializer):
 class ParkAreas(ViewSet):
     """Park Areas for Kennywood Amusement Park"""
 
+    def list(self, request):
+        """Handle GET requests to park areas resource
+
+        Returns:
+            Response -- JSON serialized list of park areas
+        """
+        areas = ParkArea.objects.all()
+        serializer = ParkAreaSerializer(
+            areas,
+            many=True,
+            context={'request': request}
+        )
+        return Response(serializer.data)
+
     # Handles POST
     def create(self, request):
         """Handle POST operations
@@ -55,20 +69,6 @@ class ParkAreas(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
-    # handles GET all
-    def list(self, request):
-        """Handle GET requests to park areas resource
-
-        Returns:
-            Response -- JSON serialized list of park areas
-        """
-        areas = ParkArea.objects.all()
-        serializer = ParkAreaSerializer(
-            areas,
-            many=True,
-            context={'request': request}
-        )
-        return Response(serializer.data)
 
     # handles PUT
     def update(self, request, pk=None):
